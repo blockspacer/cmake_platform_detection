@@ -184,20 +184,25 @@ macro(run_cmake_platform_detection)
   # -----------------------------------------------------------------------------
   if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "AppleClang")
     set(COMPILER_IS_CLANG ON)
+    set(IS_CLANG ON)
   endif()
   #
   if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+    set(COMPILER_IS_GCC 1)
+    set(IS_GCC 1)
     if (${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS "7.3.0")
-      message(FATAL_ERROR "GCC 7.3 or newer is required to build WebKit. Use a newer GCC version or Clang.")
+      message(FATAL_ERROR "GCC 7.3 or newer is required. Use a newer GCC version or Clang.")
     endif()
   endif()
   #
   if (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG)
     set(COMPILER_IS_GCC_OR_CLANG ON)
+    set(IS_GCC_OR_CLANG ON)
   endif()
   #
   if (MSVC AND COMPILER_IS_CLANG)
     set(COMPILER_IS_CLANG_CL ON)
+    set(IS_CLANG_CL ON)
   endif()
   #
   string(TOLOWER "${CMAKE_BUILD_TYPE}" cmake_build_type_tolower)
