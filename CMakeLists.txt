@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.4)
+﻿cmake_minimum_required(VERSION 3.15)
 
 # project() must be before checks, see https://stackoverflow.com/a/26437667/10904212
 set(PROJECT_NAME "cmake_platform_detection")
